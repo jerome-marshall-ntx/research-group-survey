@@ -61,7 +61,7 @@ export default function Survey() {
     setIsCompleted(true);
   };
 
-  if (!isCompleted) {
+  if (isCompleted) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 p-4">
         <div className="w-full max-w-lg rounded-lg bg-white p-4 shadow-xl sm:p-8">

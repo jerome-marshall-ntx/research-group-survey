@@ -1,10 +1,12 @@
 "use client";
 
 import { SurveyLayout } from "@/components/survey-layout";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { relationshipOptions, UserInfoForm } from "./user-info-form";
+import Link from "next/link";
+import { cn } from "@/lib/utils";
 
 export interface UserInfo {
   firstName: string;
@@ -59,7 +61,7 @@ export default function Survey() {
     setIsCompleted(true);
   };
 
-  if (isCompleted) {
+  if (!isCompleted) {
     return (
       <div className="flex min-h-screen items-center justify-center bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 p-4">
         <div className="w-full max-w-lg rounded-lg bg-white p-4 shadow-xl sm:p-8">
@@ -68,19 +70,22 @@ export default function Survey() {
           </h1>
           <p className="mb-6 text-base text-gray-600 sm:text-lg">
             We appreciate you taking the time to share your perspective with
-            Nutanix. Your input helps us better understand your needs and
-            improve our products and services.
+            Nutanix. <br />
+            We&apos;ll be in touch soon with more opportunities to contribute to
+            our research initiatives.
           </p>
 
           <div className="flex flex-col gap-4">
-            <Button
-              className="w-full bg-gradient-to-r from-purple-600 to-pink-600 py-2 text-white shadow-md hover:from-purple-700 hover:to-pink-700 disabled:cursor-not-allowed disabled:opacity-50"
-              onClick={() => {
-                resetSurvey();
-              }}
+            <Link
+              className={cn(
+                buttonVariants({ variant: "default" }),
+                "w-full bg-gradient-to-r from-purple-600 to-pink-600 py-2 text-white shadow-md hover:from-purple-700 hover:to-pink-700 disabled:cursor-not-allowed disabled:opacity-50",
+              )}
+              href={"https://nutanix.design/#/"}
+              target="_blank"
             >
-              Start Over
-            </Button>
+              Learn more about us
+            </Link>
           </div>
         </div>
       </div>
